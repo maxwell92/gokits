@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 )
-
+/*
 func Test_MysqlClient_New(*testing.T) {
 	client := NewMysqlClient(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, MAX_POOL_SIZE)
 
@@ -30,7 +30,7 @@ func Test_MysqlClient_Close(*testing.T) {
 
 		client.Close()
 	*/
-
+/*
 	NewMysqlClient(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, MAX_POOL_SIZE)
 
 	MysqlInstance().Open()
@@ -52,7 +52,7 @@ func Test_MysqlClient_Ping(*testing.T) {
 
 }
 */
-
+/*
 func TestMysqlClient_Query(*testing.T) {
 
 	/*
@@ -60,7 +60,7 @@ func TestMysqlClient_Query(*testing.T) {
 
 		client.Open()
 	*/
-
+/*
 	MysqlInstance().Open()
 
 	fmt.Printf("Pointer: %p\n", MysqlInstance())
@@ -77,3 +77,4 @@ func TestMysqlClient_Query(*testing.T) {
 
 	MysqlInstance().Close()
 }
+*/
