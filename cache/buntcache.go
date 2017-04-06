@@ -1,12 +1,11 @@
 package cache
 
 import (
-	"app/backend/common/util/hashmap"
-	// mymd5 "app/backend/common/util/md5"
 	"github.com/tidwall/buntdb"
 	"github.com/tidwall/gjson"
 	"strings"
 	"sync"
+	"gitlab.com/gokits/hashmap"
 )
 
 

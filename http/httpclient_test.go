@@ -1,10 +1,7 @@
 package http
 
 import (
-	appdeploy "app/backend/model/k8s/deployment"
-	"encoding/json"
 	"fmt"
-	"strings"
 	"testing"
 )
 
@@ -28,7 +25,7 @@ func Test_HttpClient_Get(t *testing.T) {
 		fmt.Println(string(resp))
 	}
 }
-
+/*
 func Test_HttpClient_Post(t *testing.T) {
 
 	tempDeploy := new(appdeploy.BasicDeployment)
@@ -59,6 +56,7 @@ func Test_HttpClient_Post(t *testing.T) {
 	}
 
 }
+*/
 
 func Test_HttpClient_Delete(t *testing.T) {
 	client := NewHttpClient("http://master", "8080")
@@ -69,3 +67,4 @@ func Test_HttpClient_Delete(t *testing.T) {
 		fmt.Println(string(resp))
 	}
 }
+

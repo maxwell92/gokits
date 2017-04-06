@@ -2,9 +2,10 @@ package cache
 
 import (
 	"sync"
-	redigo "app/backend/common/util/redigo"
+	redigo "gitlab.com/gokits/redigo"
 	redis "github.com/garyburd/redigo/redis"
-	mylog "app/backend/common/util/log"
+	mylog "gitlab.com/gokits/log"
+
 )
 
 var log = mylog.Log

@@ -1,9 +1,9 @@
 package kubewatcher
 
 import (
-	mcache "app/backend/common/cache"
+	mcache "gitlab.com/gokits/cache"
 	"time"
-	mytime "app/backend/common/util/time"
+	mytime "gitlab.com/gokits/time"
 )
 
 func NewSuperWatcher(apiServers []string) *SuperWatcher {
