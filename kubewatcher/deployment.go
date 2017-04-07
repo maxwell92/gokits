@@ -3,15 +3,15 @@ package kubewatcher
 import (
 	"fmt"
 
-	mcache "github.com/maxwell92/gokits/cache"
 	mydeployment "app/backend/controller/yce/deploy"
+	mcache "github.com/maxwell92/gokits/cache"
 	mytime "github.com/maxwell92/gokits/time"
 
-	"k8s.io/kubernetes/pkg/apis/extensions"
-	kwatch "k8s.io/kubernetes/pkg/watch"
 	yceutils "app/backend/controller/yce/utils"
-	client "k8s.io/kubernetes/pkg/client/unversioned"
 	"k8s.io/kubernetes/pkg/api"
+	"k8s.io/kubernetes/pkg/apis/extensions"
+	client "k8s.io/kubernetes/pkg/client/unversioned"
+	kwatch "k8s.io/kubernetes/pkg/watch"
 )
 
 type DeploymentWatcher struct {
@@ -34,7 +34,7 @@ func (dw *DeploymentWatcher) Aggregate(eventCh chan kwatch.Event) {
 				eventCh <- e
 				log.Tracef("KubeWatcher DeploymentWatcher receive event of type %s", e.Type)
 			}
-		case _ = <-dw.StopCh :
+		case _ = <-dw.StopCh:
 			{
 				log.Tracef("KubeWatcher DeploymentWatcher receive Stop")
 				dw.Events.Stop()
@@ -83,14 +83,14 @@ func (dw *DeploymentWatcher) Add(e kwatch.Event) {
 	svc, _ := yceutils.GetServiceByDeployment(dw.client, dp)
 
 	newDp := &mydeployment.Deployments{
-		UserName:       dp.Labels["author"],
+		UserName:       dp.Annotations["lastModified"],
 		DcName:         dw.dcName,
 		DcId:           dw.dcId,
 		OrgName:        dp.Namespace,
 		DeploymentName: dp.Name,
 		UpdateTime:     dp.ObjectMeta.CreationTimestamp.String(),
 		Deployment:     dp,
-		PodList:       	podList,
+		PodList:        podList,
 		Service:        svc,
 	}
 
@@ -119,7 +119,7 @@ func (dw *DeploymentWatcher) Add(e kwatch.Event) {
 	log.Debugf("KubeWatcher DeploymentWatcher Smember Key %s results %v", dpNameKey, dpNameList)
 
 	ok, err = dw.Cache.Sadd(dpNameKey, newDp.DeploymentName)
-	if err != nil  {
+	if err != nil {
 		log.Errorf("KubeWatcher DeploymentWatcher Sadd key %s with %s Error: error=%s", dpNameKey, err, newDp.DeploymentName)
 		return
 	}
