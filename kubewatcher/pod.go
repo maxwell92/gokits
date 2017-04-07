@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"strings"
 
-	mcache "gitlab.com/gokits/cache"
+	mcache "gokits/cache"
 	mydeployment "app/backend/controller/yce/deploy"
-	mytime "gitlab.com/gokits/time"
+	mytime "gokits/time"
 
 	"k8s.io/kubernetes/pkg/api"
 	kwatch "k8s.io/kubernetes/pkg/watch"

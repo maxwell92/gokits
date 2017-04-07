@@ -1,8 +1,8 @@
 package kubewatcher
 
 import (
-	mylog "gitlab.com/gokits/log"
-	mcache "gitlab.com/gokits/cache"
+	mylog "gokits/log"
+	mcache "gokits/cache"
 )
 
 var log = mylog.Log

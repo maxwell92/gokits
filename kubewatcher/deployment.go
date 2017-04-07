@@ -3,9 +3,9 @@ package kubewatcher
 import (
 	"fmt"
 
-	mcache "gitlab.com/gokits/cache"
+	mcache "gokits/cache"
 	mydeployment "app/backend/controller/yce/deploy"
-	mytime "gitlab.com/gokits/time"
+	mytime "gokits/time"
 
 	"k8s.io/kubernetes/pkg/apis/extensions"
 	kwatch "k8s.io/kubernetes/pkg/watch"

@@ -1,7 +1,7 @@
 package mysql
 
 import (
-	mylog "gitlab.com/gokits/log"
+	mylog "gokits/log"
 	config "app/backend/common/yce/config"
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"

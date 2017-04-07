@@ -5,7 +5,7 @@ import (
 	"github.com/tidwall/gjson"
 	"strings"
 	"sync"
-	"gitlab.com/gokits/hashmap"
+	"gokits/hashmap"
 )
 
 
