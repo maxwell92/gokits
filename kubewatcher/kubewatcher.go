@@ -5,7 +5,7 @@ import (
 	kwatch "k8s.io/kubernetes/pkg/watch"
 	yceutils "app/backend/controller/yce/utils"
 	"reflect"
-	mcache	"gokits/cache"
+	mcache	"github.com/maxwell92/gokits/cache"
 )
 
 type Watcher interface {

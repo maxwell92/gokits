@@ -1,14 +1,14 @@
 package session
 
 import (
-	mylog "gokits/log"
+	mylog "github.com/maxwell92/gokits/log"
 	"encoding/json"
 	"errors"
 
-	localtime "gokits/time"
+	localtime "github.com/maxwell92/gokits/time"
 	"github.com/pborman/uuid"
 
-	redigo "gokits/redigo"
+	redigo "github.com/maxwell92/gokits/redigo"
 	redis "github.com/garyburd/redigo/redis"
 	"sync"
 )

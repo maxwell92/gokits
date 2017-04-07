@@ -1,9 +1,9 @@
 package kubewatcher
 
 import (
-	mcache "gokits/cache"
+	mcache "github.com/maxwell92/gokits/cache"
 	mydeployment "app/backend/controller/yce/deploy"
-	mytime "gokits/time"
+	mytime "github.com/maxwell92/gokits/time"
 
 	"fmt"
 	"k8s.io/kubernetes/pkg/api"

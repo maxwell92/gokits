@@ -1,7 +1,7 @@
 package https
 
 import (
-	mylog "gokits/log"
+	mylog "github.com/maxwell92/gokits/log"
 )
 
 var log = mylog.Log

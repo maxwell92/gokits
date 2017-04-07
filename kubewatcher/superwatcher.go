@@ -1,9 +1,9 @@
 package kubewatcher
 
 import (
-	mcache "gokits/cache"
+	mcache "github.com/maxwell92/gokits/cache"
 	"time"
-	mytime "gokits/time"
+	mytime "github.com/maxwell92/gokits/time"
 )
 
 func NewSuperWatcher(apiServers []string) *SuperWatcher {

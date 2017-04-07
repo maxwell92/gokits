@@ -1,7 +1,7 @@
 package kubewatcher
 
 import (
-	mycache "gokits/cache"
+	mycache "github.com/maxwell92/gokits/cache"
 	mydeployment "app/backend/controller/yce/deploy"
 	"fmt"
 	"testing"

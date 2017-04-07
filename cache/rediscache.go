@@ -2,9 +2,9 @@ package cache
 
 import (
 	"sync"
-	redigo "gokits/redigo"
+	redigo "github.com/maxwell92/gokits/redigo"
 	redis "github.com/garyburd/redigo/redis"
-	mylog "gokits/log"
+	mylog "github.com/maxwell92/gokits/log"
 
 )
 
