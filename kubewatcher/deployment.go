@@ -146,6 +146,7 @@ func (dw *DeploymentWatcher) Modified(e kwatch.Event) {
 	log.Debugf("KubeWatcher DeploymentWatcher Decoded with %d pod", len(oldDp.PodList.Items))
 
 	oldDp.Deployment = dp
+	oldDp.UserName = dp.Annotations["lastModified"]
 
 	data := oldDp.Encode()
 	log.Debugf("KubeWatcher DeploymentWatcher Encoded with %d pod", len(oldDp.PodList.Items))
