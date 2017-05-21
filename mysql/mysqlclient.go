@@ -33,13 +33,14 @@ var once sync.Once
 func NewMysqlClient(host, user, password, database string, pool int) *MysqlClient {
 	once.Do(func() {
 		instance = &MysqlClient{
-			host: host,
-			user: user,
+			host:     host,
+			user:     user,
 			password: password,
 			database: database,
-			pool: pool,
-		})
-	})
+			pool:     pool,
+		}
+	)}
+	return instance
 }
 
 func (c *MysqlClient) Open() {
