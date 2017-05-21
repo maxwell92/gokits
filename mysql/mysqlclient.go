@@ -21,6 +21,7 @@ const (
 type MysqlClient struct {
 	DB       *sql.DB
 	host     string
+	port     string
 	user     string
 	password string
 	database string
@@ -30,21 +31,22 @@ type MysqlClient struct {
 var instance *MysqlClient
 var once sync.Once
 
-func NewMysqlClient(host, user, password, database string, pool int) *MysqlClient {
+func NewMysqlClient(host, port, user, password, database string, pool int) *MysqlClient {
 	once.Do(func() {
 		instance = &MysqlClient{
 			host:     host,
+			port:     port,
 			user:     user,
 			password: password,
 			database: database,
 			pool:     pool,
 		}
-	)}
+	})
 	return instance
 }
 
 func (c *MysqlClient) Open() {
-	endpoint := c.user+ ":" + c.password + "@tcp(" + c.host + ")/" + c.database + CONNECTION_SUFFIX
+	endpoint := c.user+ ":" + c.password + "@tcp(" + c.host + ":" + c.port + ")/" + c.database + CONNECTION_SUFFIX
 	db, err := sql.Open(DRIVER, endpoint)
 	if err != nil {
 		log.Fatalf("MysqlClient Open Error: err=%s", err)
@@ -54,9 +56,7 @@ func (c *MysqlClient) Open() {
 	// Set Connection Pool
 	db.SetMaxOpenConns(MAX_ACTIVECONN)
 	db.SetMaxIdleConns(MAX_IDLECONN)
-
 	c.DB = db
-
 }
 
 func (c *MysqlClient) Close() {
