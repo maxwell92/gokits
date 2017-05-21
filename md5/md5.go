@@ -10,4 +10,3 @@ func Md5Sum(text string) string {
 	hash.Write([]byte(text))
 	return hex.EncodeToString(hash.Sum(nil))
 }
-

@@ -31,5 +31,5 @@ func (deploy *Deploy) Unmarshal(content *[]byte) error {
 
 type Indexer struct {
 	Index string
-	Key string
+	Key   string
 }

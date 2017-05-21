@@ -1,9 +1,9 @@
 package cache
 
 import (
+	config "app/backend/common/yce/config"
 	"fmt"
 	"testing"
-	config "app/backend/common/yce/config"
 )
 
 func TestAll(t *testing.T) {
@@ -72,29 +72,28 @@ func TestAll(t *testing.T) {
 	}
 	fmt.Printf("Key %s Smember results %v\n", tmpKey, result)
 
-
 	/*
-	l := cache.Llen(tmpKey)
-	fmt.Printf("Before %d len\n", l)
+		l := cache.Llen(tmpKey)
+		fmt.Printf("Before %d len\n", l)
 
-	ok, err = cache.Lpush(tmpKey, tmpValue)
-	if err != nil || !ok {
-		fmt.Printf("Lpush Error: error=%s\n", err)
-		return
-	}
-	fmt.Printf("Key %s lpush success value %s\n", tmpKey, tmpValue)
+		ok, err = cache.Lpush(tmpKey, tmpValue)
+		if err != nil || !ok {
+			fmt.Printf("Lpush Error: error=%s\n", err)
+			return
+		}
+		fmt.Printf("Key %s lpush success value %s\n", tmpKey, tmpValue)
 
-	l = cache.Llen(tmpKey)
-	fmt.Printf("After %d len\n", l)
+		l = cache.Llen(tmpKey)
+		fmt.Printf("After %d len\n", l)
 
-	start := "0"
-	end := "1"
-	result, err := cache.Lrange(tmpKey, start, end)
-	if err != nil {
-		fmt.Printf("Lrange Error: error=%s\n", err)
-		return
-	}
-	fmt.Printf("Key %s Lrange success value %v\n", tmpKey, result)
+		start := "0"
+		end := "1"
+		result, err := cache.Lrange(tmpKey, start, end)
+		if err != nil {
+			fmt.Printf("Lrange Error: error=%s\n", err)
+			return
+		}
+		fmt.Printf("Key %s Lrange success value %v\n", tmpKey, result)
 	*/
 
 	ok, err = cache.Delete(key)
@@ -142,27 +141,26 @@ func TestAll(t *testing.T) {
 	}
 	fmt.Printf("Key %s Smember results %v\n", tmpKey, result)
 
-
 	/*
-	ok, err = cache.Lrem(tmpKey, "0", "nginx")
-	if err != nil || !ok {
-		fmt.Printf("Lrem Error: error=%s\n", err)
-		return
-	}
-	fmt.Printf("Lrem key %s success\n", tmpKey)
+		ok, err = cache.Lrem(tmpKey, "0", "nginx")
+		if err != nil || !ok {
+			fmt.Printf("Lrem Error: error=%s\n", err)
+			return
+		}
+		fmt.Printf("Lrem key %s success\n", tmpKey)
 
-	result, err = cache.Lrange(tmpKey, start, end)
-	if err != nil {
-		fmt.Printf("Lrange Error: error=%s\n", err)
-		return
-	}
-	if len(result) == 0{
-		fmt.Printf("key %s Lrange no result\n", tmpKey)
-	} else {
-		fmt.Printf("Key %s Lrange success value %v\n", tmpKey, result)
-	}
+		result, err = cache.Lrange(tmpKey, start, end)
+		if err != nil {
+			fmt.Printf("Lrange Error: error=%s\n", err)
+			return
+		}
+		if len(result) == 0{
+			fmt.Printf("key %s Lrange no result\n", tmpKey)
+		} else {
+			fmt.Printf("Key %s Lrange success value %v\n", tmpKey, result)
+		}
 
-	l = cache.Llen(tmpKey)
-	fmt.Printf("After Delete %d len\n", l)
+		l = cache.Llen(tmpKey)
+		fmt.Printf("After Delete %d len\n", l)
 	*/
 }

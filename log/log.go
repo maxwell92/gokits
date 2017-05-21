@@ -2,13 +2,13 @@ package log
 
 import (
 	"fmt"
+	"github.com/iris-contrib/color"
 	"io"
 	"os"
 	"runtime"
 	"strings"
 	"sync"
 	"time"
-	"github.com/iris-contrib/color"
 )
 
 const (

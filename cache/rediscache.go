@@ -1,11 +1,10 @@
 package cache
 
 import (
-	"sync"
-	redigo "github.com/maxwell92/gokits/redigo"
 	redis "github.com/garyburd/redigo/redis"
 	mylog "github.com/maxwell92/gokits/log"
-
+	redigo "github.com/maxwell92/gokits/redigo"
+	"sync"
 )
 
 var log = mylog.Log
@@ -28,6 +27,7 @@ func NewRedisCache() *RedisCache {
 	})
 	return instance
 }
+
 /*
 func (rc *RedisCache) Update(key, value string) error {
 	/*
@@ -206,7 +206,7 @@ func (rc *RedisCache) Llen(key string) int32 {
 	return int32(result)
 }
 
-func (rc *RedisCache) Lrem(key, count, value string) (bool, error){
+func (rc *RedisCache) Lrem(key, count, value string) (bool, error) {
 	conn := rc.pool.Get()
 	if conn == nil {
 		log.Errorf("RedisCache LLen Connection Error: Nil")
@@ -231,8 +231,8 @@ func (rc *RedisCache) Exist(key string) (bool, error) {
 	defer conn.Close()
 
 	results, err := redis.Int(conn.Do("EXISTS", key))
-	if err != nil{
-		log.Errorf("RedisCache Exist Key Error: error=%s",  err)
+	if err != nil {
+		log.Errorf("RedisCache Exist Key Error: error=%s", err)
 		return false, err
 	}
 
@@ -251,8 +251,8 @@ func (rc *RedisCache) Sadd(key, value string) (bool, error) {
 	defer conn.Close()
 
 	results, err := redis.Int(conn.Do("SADD", key, value))
-	if err != nil{
-		log.Errorf("RedisCache Sadd Key Error: error=%s",  err)
+	if err != nil {
+		log.Errorf("RedisCache Sadd Key Error: error=%s", err)
 		return false, err
 	}
 
@@ -271,8 +271,8 @@ func (rc *RedisCache) Smember(key string) ([]string, error) {
 	defer conn.Close()
 
 	results, err := redis.Strings(conn.Do("SMEMBERS", key))
-	if err != nil{
-		log.Errorf("RedisCache Smember Key Error: error=%s",  err)
+	if err != nil {
+		log.Errorf("RedisCache Smember Key Error: error=%s", err)
 		return nil, err
 	}
 
@@ -288,8 +288,8 @@ func (rc *RedisCache) Scard(key string) (int32, error) {
 	defer conn.Close()
 
 	results, err := redis.Int(conn.Do("SCARD", key))
-	if err != nil{
-		log.Errorf("RedisCache Scard Key Error: error=%s",  err)
+	if err != nil {
+		log.Errorf("RedisCache Scard Key Error: error=%s", err)
 		return 0, err
 	}
 
@@ -305,8 +305,8 @@ func (rc *RedisCache) Srem(key, value string) (bool, error) {
 	defer conn.Close()
 
 	results, err := conn.Do("SREM", key, value)
-	if err != nil{
-		log.Errorf("RedisCache Srem Key Error: error=%s",  err)
+	if err != nil {
+		log.Errorf("RedisCache Srem Key Error: error=%s", err)
 		return false, err
 	}
 

@@ -25,6 +25,7 @@ func Test_HttpClient_Get(t *testing.T) {
 		fmt.Println(string(resp))
 	}
 }
+
 /*
 func Test_HttpClient_Post(t *testing.T) {
 
@@ -67,4 +68,3 @@ func Test_HttpClient_Delete(t *testing.T) {
 		fmt.Println(string(resp))
 	}
 }
-

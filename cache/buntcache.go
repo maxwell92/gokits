@@ -1,13 +1,12 @@
 package cache
 
 import (
+	"github.com/maxwell92/gokits/hashmap"
 	"github.com/tidwall/buntdb"
 	"github.com/tidwall/gjson"
 	"strings"
 	"sync"
-	"github.com/maxwell92/gokits/hashmap"
 )
-
 
 type BuntCache struct {
 	sync.Mutex
@@ -140,9 +139,8 @@ func (c *BuntCache) doSearch(index, k string, results *map[string]string) error 
 	return nil
 }
 
-
 // Find
-func (c *BuntCache)Find(args ...Indexer) (*map[string]string, error) {
+func (c *BuntCache) Find(args ...Indexer) (*map[string]string, error) {
 	results := make(map[string]string)
 	counters := make(map[string]int32)
 	c.Mutex.Lock()
