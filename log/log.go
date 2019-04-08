@@ -2,7 +2,6 @@ package log
 
 import (
 	"fmt"
-	"github.com/iris-contrib/color"
 	"io"
 	"os"
 	"runtime"
@@ -49,10 +48,6 @@ func getShortFileName(file string) string {
 	return file[index+1:]
 }
 
-func attr(sgr int) color.Attribute {
-	return color.Attribute(sgr)
-}
-
 func NewLogger(writer io.Writer, level int) *Logger {
 	return &Logger{
 		Writer: writer,
@@ -69,6 +64,33 @@ func (l *Logger) SetLevel(level int) {
 	l.mu.Lock()
 	defer l.mu.Unlock()
 	l.Level = level
+}
+
+func (l *Logger) SetLevelByName(level string) {
+	switch level {
+	case "ERROR":
+		{
+			l.SetLevel(ERROR)
+		}
+	case "WARN":
+		{
+			l.SetLevel(WARN)
+		}
+	case "INFO":
+		{
+			l.SetLevel(INFO)
+		}
+	case "DEBUG":
+		{
+			l.SetLevel(DEBUG)
+		}
+	case "TRACE":
+		{
+			l.SetLevel(TRACE)
+		}
+	default:
+		l.SetLevel(WARN)
+	}
 }
 
 func (l *Logger) Log(level int, v ...interface{}) {
@@ -95,15 +117,7 @@ func (l *Logger) Logf(level int, format string, v ...interface{}) {
 	file = getShortFileName(file)
 
 	log := fmt.Sprintf("%s [%s] %s [%s] [%s:%d]", timestamp, loglevel, context, funcname, file, line)
-
-	if level == ERROR {
-		c := color.New(l.Writer, attr(int(color.FgHiRed)))
-		coloredFmtPrinter := c.SprintFunc()
-		fmt.Fprintln(l.Writer, coloredFmtPrinter(log))
-	} else {
-		fmt.Fprintln(l.Writer, log)
-	}
-
+	fmt.Fprintln(l.Writer, log)
 }
 
 func (l *Logger) Traceln(v ...interface{}) {
